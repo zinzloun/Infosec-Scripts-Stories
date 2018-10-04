@@ -1,5 +1,6 @@
 #!/bin/sh
 #DNS Forward lookup using the host command
+#
 if [ $# -ge 3 ]
 then
 	#echo $1
