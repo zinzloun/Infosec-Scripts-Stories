@@ -6,5 +6,5 @@ if [ $# -ge 2 ]
 then
 	for ip in $(cat $1); do dig @$2 -x $ip +nocookie; done
 else
-	echo You must pass 2 arguments: 1 the IPs list file, 2 the DNS IP
+	echo You must pass 2 arguments: 1 the IPs list file see IPs.txt, 2 the DNS IP e.g. 8.8.8.8
 fi
