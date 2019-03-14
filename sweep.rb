@@ -1,7 +1,7 @@
 =begin
  *** ICMP ping sweep of a net segment as xxx.xxx.xxx. ***
  *** Required gems: net-ping, win32-security (on windows only) ***
- *** v. 1.0 Zinzloun ***
+ *** v. 1.0 coded by Zinzloun ***
 =end
 
 #import gem
@@ -11,17 +11,19 @@ if ARGV.empty?
   exit 1
 end
 
-puts "Sweep started, please wait...\n"
+puts "*** Sweep started, please wait... ***\n"
 #get the net segment
 net_seg = ARGV[0]
-#default (optional) is 1 second, decrease it to speed up
+#default ping timeout (optional) is 1 second, decreased it to speed up
 timeout = 0.15
+#counter live hosts
 ip_count = 0
+#hosts log printed eventually (-f) to the output file
 output_s = ""
 
 #subnet range loop
 (1..254).each do |ip|
- #ping a host
+ #ping the current host
  req = Net::Ping::ICMP.new(net_seg + ip.to_s,nil,timeout)
  #check is alive
  if req.ping
@@ -41,7 +43,7 @@ if ARGV.include?("-f")
  begin
   file = File.open("./sweep.txt", "w")
   file.write(output_s)
-  puts "Scan result saved in file sweep.txt"
+  puts "Scan result saved in .sweep.txt"
  rescue IOError => e
   #some error occur, dir not writable etc...
   puts "An error occured creating the sweep output file. " + e.to_s
