@@ -66,6 +66,7 @@ for i in 1..1
  uT.recalc
  #send it
  uT.to_w
+ sleep(0.5)
 end
 
 puts i.to_s + " packet[s] sent"
