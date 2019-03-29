@@ -1,5 +1,5 @@
 =begin
- TCP SYN PORT SCANNER for an IP and a port range
+ TCP SYN PORT SCANNER for an IP and a port range, eventually print the result in a file
   e.g. 10.100.2.14 1-500 
  returns the state of scanned ports
 =end
