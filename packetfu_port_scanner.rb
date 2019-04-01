@@ -16,15 +16,15 @@ def start_capture(host,start_port,end_port)
 	Thread.new{
 		cap = Capture.new
 		#filter rule ro capture packet
-		cap.capture(:filter => ("tcp and src host "+host) )
+		cap.capture(:filter => ("tcp and src host " + host))
 		cap.stream.each do |rw|
 				tcp_packet = Packet.parse(rw)
 				port = tcp_packet.tcp_sport.to_i
 				next if !port.between?(start_port,end_port)
 				flags = tcp_packet.tcp_flags
-				#port is open
+				#port is open: syn == 1
 				open.push(port) if (flags.syn==1 && flags.ack==1 && !open.include?(port)) 
-				#port is closed
+				#port is closed: conn reset
 				closed.push(port) if (flags.rst==1 && flags.ack==1 && !open.include?(port))
 		end
 	}
