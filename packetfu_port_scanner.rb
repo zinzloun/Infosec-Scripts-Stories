@@ -15,7 +15,7 @@ def start_capture(host,start_port,end_port)
 	open=[]; closed=[]
 	Thread.new{
 		cap = Capture.new
-		#filter rule ro capture packet
+		#filter rule ro capture packet: IF THE PORT IS FILTERED NO PACKETS WILL BE received
 		cap.capture(:filter => ("tcp and src host " + host))
 		cap.stream.each do |rw|
 				tcp_packet = Packet.parse(rw)
