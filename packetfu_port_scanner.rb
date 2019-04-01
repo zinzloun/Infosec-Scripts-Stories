@@ -86,7 +86,7 @@ start_port,end_port = port_range.split("-").map{|idx| idx.to_i}
 #start the capture in a new thread
 #return a matrix with open and closed ports
 #index 0 = open
-#index 1 = closed
+#index 1 = closed 
 open_closed = start_capture(host,start_port,end_port)
 #####################################################
 
