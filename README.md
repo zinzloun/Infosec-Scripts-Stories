@@ -7,4 +7,4 @@ Some u(nu)seful scripts<br>
 - scan_ports.rb: Simple multi-threads ports scan
 - packetfu_tcp_syn.rb: Emulate sS Nmap scan probe, requires <a href="https://github.com/packetfu/packetfu">PacketFu</a>
 - packetfu_port_scanner.rb: Scan a given port range for an IP, requires PacketFu as well
-- install_cron_rs_openssl.sh: Set a cron job to spawn a reverse shell through openssl, see comment in the file fore more info
+- install_cron_rs_openssl.sh: Set a cron job to persist a reverse shell through openssl, see comment in the file fore more info
