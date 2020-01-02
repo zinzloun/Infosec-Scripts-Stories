@@ -9,7 +9,8 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 echo "Generating the wordlist from $1..."
-cewl "$1" -d 1 -w tmp_wl.txt
+#-d 0: do not follow any link in the page
+cewl "$1" -d 0 -w tmp_wl.txt
 # clean up the result for wikipedia derived wl 1
 echo "done. Clean up the result..."
 cat tmp_wl.txt | grep "\w\{7,\}" | grep -v "^wg" | head -n -50 > tmp_wl1.txt
