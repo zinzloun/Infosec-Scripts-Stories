@@ -1,6 +1,6 @@
 # Tools
 1. nmap compiled with limited features. All the glory goes to: https://github.com/andrew-d/static-binaries/tree/master/binaries/windows/x86
-- You can perform only connected scan -sT. If you are logged as unprivileged user you may have to pass the corresponding option:<br><b>nmap -sT -n -Pn -p- -v --unprivileged target</b>If you are a previleged user you can skip it.
+- You can perform only connected scan -sT. If you are logged as unprivileged user you may have to pass the corresponding option:<br><b>nmap -sT -n -Pn -p- -v --unprivileged target</b><br>If you are a previleged user you can skip it.
 2. arp_scan, again thanx to: https://github.com/QbsuranAlang/arp-scan-windows-<br>
   - arp-scan.exe -t subnet
 3. port_scan.py, a simple Python port scan on ports 1-1000, you must pass an IP as argument
