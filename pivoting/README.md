@@ -5,7 +5,8 @@
   - arp-scan.exe -t subnet
 3. port_scan.py, a simple Python port scan on ports 1-1000, you must pass an IP as argument
 - ./port_scan.py IP
-4. winscppwd.exe, reverse the saved SCP client password presenti in a in file<br/>winscppwd.exe mySCPFile.ini
+4. winscppwd.exe, reverse the saved SCP client password presenti in a in file
+- winscppwd.exe mySCPFile.ini
 
 # Scripts & Commands
 - CMD DOS ping sweep (192.168.1.0/254), redirect output to a file<br>
