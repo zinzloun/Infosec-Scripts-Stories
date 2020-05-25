@@ -13,4 +13,6 @@
   └──╼ FOR /L %i in (1,1,254) do @ping -n 1 -w 200 192.168.1.%i | find "TTL" >> %temp%\Ping_Sweep_Results.txt
 - Shell ping sweep same subnet<br>
   └──╼ for i in {1..254}; do ping -c 1 192.168.1.$i | grep "from" | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"; done
-
+- Windows port forward<br>
+  └──╼  netsh interface portproxy add v4tov4 listenaddress=10.1.17.83 listenport=6689 connectaddress=10.1.45.192 connectport=3389
+ <br>delete rule: netsh interface portproxy delete v4tov4 listenaddress=10.1.17.83 listenport=6689
