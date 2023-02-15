@@ -1,6 +1,5 @@
-# Using fuff pipes on a winzoz box (oh my...)
-Since I'm a big Winzoz f(a)n, based on the following resource: http://ffuf.me/cd/pipes<br>
-we can use the following Powershel commands to accomplish the same tasks
+# Using fuff pipes on a winzoz box 😨
+Since I'm a big Winzoz fμn, to implement the same scans as explained [here](http://ffuf.me/cd/pipes), we can use the following <b>Powershel commands</b> to accomplish the tasks:
 
 ##  Test parameter for an [IDOR](https://portswigger.net/web-security/access-control/idor) vulnerability and try some integers against it.
 
