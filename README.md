@@ -9,4 +9,3 @@ Some u(nu)seful scripts<br>
 - packetfu_port_scanner.rb: Scan a given port range for an IP, requires PacketFu as well
 - install_cron_rs_openssl.sh: Set a cron job to persist a reverse shell through openssl, see comment in the file fore more info
 - cewl2ascii.sh: Clean up a generated wordlist from a Wikipedia site, using cewl (required)
-- create_met_rev_tcp.sh: Create a windows meterpreter reverse shell using the supplied lhost and port
