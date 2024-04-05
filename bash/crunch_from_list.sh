@@ -6,7 +6,7 @@ cecho(){
 
     NC="\033[0m" # No Color
 
-    printf "${!1}${2} ${NC}\n"
+    echo -e "${!1}${2} ${NC}"
 }
 
 if ! command -v crunch &> /dev/null
@@ -44,7 +44,10 @@ do
  cecho "GREEN" "....combinations created for $line: $i/$n_rows"
 
 done < "$1"
-# I want to keep only the passwords in the file that ends the following specials charachters !@#$%^
+# OPTIONAL ##########################################################################
+cecho "YEL" "Clean up the file, I will keep only the passwords that ends with !@#$%^"
 sed -i '/[^!@#$%^]$/d' $output
+######################################################################################
+
 cecho "GREEN" "Total passwords generated: $(wc -l < $output)"
 cecho "GREEN" "Password list created. The list is saved as $PWD/$output"
