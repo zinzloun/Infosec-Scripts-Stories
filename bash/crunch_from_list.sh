@@ -44,5 +44,7 @@ do
  cecho "GREEN" "....combinations created for $line: $i/$n_rows"
 
 done < "$1"
+# I want to keep only the passwords in the file that ends the following specials charachters !@#$%^
+sed -i '/[^!@#$%^]$/d' $output
 cecho "GREEN" "Total passwords generated: $(wc -l < $output)"
 cecho "GREEN" "Password list created. The list is saved as $PWD/$output"
