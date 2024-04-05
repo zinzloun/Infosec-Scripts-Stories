@@ -1,7 +1,7 @@
-### crunch_from_list.sh
+## crunch_from_list.sh
 Generate a passwrord list, reading the words (lines) present in the provided input file; for each word append a numnber (0-9) and a special charachter
 
-### spray_with_hydra.sh
+## spray_with_hydra.sh
 Using hydra to perform a password spray attack. The logic is
 - loop for lines in a passwords file
 - nested loop for users file
