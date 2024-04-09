@@ -54,9 +54,11 @@ c=$(($a+$b))
 #convert seconds to hours
 totH=$(($c/3600))
 
-cecho "R" "The procedure will take approximately $totH hours to complite. Valid found credentials will be saved in $log_cred"
+cecho "P" "The procedure will take approximately $totH hours to complite. Valid found credentials will be saved in $log_cred file"
+cecho "R" "Please note that if a valid password is found for a username, the corresponding line will be deleted from the file $usrListF, so consider a backup before proceeding"
 
-sleep 10
+read -p "Press Enter to continue, or CTRL+C to exit"
+
 
 # we have found valid credentials
 sex="successfully"
@@ -86,7 +88,7 @@ do
   if [ $avanti -eq 0 ]; then
    exit 0
   else
-   # to speed up the process we remove the user we have found the password from the list
+   # to speed up the process we remove the user which we have found the password from the list
    sed -i "/$usr/d" $usrListF
   fi
  
