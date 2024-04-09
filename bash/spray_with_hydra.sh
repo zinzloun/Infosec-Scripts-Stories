@@ -55,7 +55,8 @@ c=$(($a+$b))
 totH=$(($c/3600))
 
 cecho "R" "The procedure will take approximately $totH hours to complite. Valid found credentials will be saved in $log_cred"
-sleep 5
+
+sleep 10
 
 # we have found valid credentials
 sex="successfully"
