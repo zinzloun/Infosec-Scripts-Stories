@@ -1,8 +1,8 @@
 #!/bin/bash
 cecho(){
-    R="\033[1;31m"
-    G="\033[0;32m"  # <-- [0 means not bold
-    O="\033[1;33m" # <-- [1 means bold
+    R="\033[0;31m"
+    G="\033[0;32m"  # <-- [0 not bold
+    O="\033[1;33m" # <-- [1 bold
     P="\033[1;35m"
     NC="\033[0m" # No Color
     echo -e "${!1}${2} ${NC}"
