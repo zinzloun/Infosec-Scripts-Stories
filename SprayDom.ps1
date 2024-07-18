@@ -1,3 +1,5 @@
+# 1. Generate a domain users list (if not present)
+# 2. Lunch the attack using a provided password
 function Test-ADAuthentication {
 	Param(
 		[Parameter(Mandatory)]
@@ -229,19 +231,13 @@ function Get-Spray(){
 		}
 	
 	}
-	#generate it 
+	#generate the list
 	else{ 
 		Get-DomUL -Domain $Domain 
 		#recursive call
 		Get-Spray -Domain $Domain -Password $Password
 	}
-	
-	
-	#check if users file exists
+
 	
 	
 }
-
-#Test-ADAuthentication -User toto -Password passXX
-
-#Test-ADAuthentication -User toto -Password passXX -Server xxx.domain.com
