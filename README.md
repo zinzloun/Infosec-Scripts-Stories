@@ -1,5 +1,6 @@
 # Scripts
 Some u(nu)seful scripts<br>
+- SprayDom.ps1: Password spray attack against domain users
 - bin2hex.py: READ A BIN FILE AND ENCODE THE CONTENT IN HEX<br>
 - pushS.py: CREATE THE NASM INSTRUCTION TO PUSH A STRING INTO THE STACK
 - sweep.rb: Simple ping sweep
