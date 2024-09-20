@@ -24,7 +24,45 @@ Get a shell inside the remote container
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     root           1  0.0  0.5 102540 11388 ?        Ss   13:14   0:03 /sbin/init
     ...
+
 There are a total of 191 running process, very strange for a container: maybe the container is sharing the same namespace with the host OS? That would imply the container can communicate with the processes on the host.
+
+### How to know that we are in a container?
+#### Inspect running process
+Usually issuing:
+
+    ps aux
+    USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+    root         1  0.0  0.2  72304  5460 ?        Ss   12:22   0:00 /usr/sbin/sshd -D
+    root         6  0.0  0.3  72360  6512 ?        Rs   12:39   0:00 sshd: root@pts/0
+    root         8  0.0  0.1  20256  3832 pts/0    Ss   12:39   0:00 -bash
+    root        26  0.0  0.1  36152  3252 pts/0    R+   12:44   0:00 ps aux
+
+As shown above we have only few process. 
+#### Look for dockerenv
+
+    cd / && ls -lah
+    total 88K
+    drwxr-xr-x   1 root root 4.0K Sep 20 12:42 .
+    drwxr-xr-x   1 root root 4.0K Sep 20 12:42 ..
+    -rwxr-xr-x   1 root root    0 Nov 10  2020 .dockerenv
+    ...
+
+#### Inspects cgroup namespace
+As we know Cgroup are used by Docker:
+
+    cd /proc/1 && cat cgroup | grep docker
+    12:pids:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    11:devices:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    10:cpuset:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    9:freezer:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    8:hugetlb:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    6:cpu,cpuacct:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    5:memory:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    4:blkio:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    3:perf_event:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    2:net_cls,net_prio:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
+    1:name=systemd:/docker/8a9427527c82750ca34a86a4003879e35a381d3cd9438ef8975c2b4791b4d886
 
 ## Abusing the second misconfiguration: shared host namespace
 Here we are abusing <b>nsenter</b> command, that allows us to execute a processes in a differen namespace. 
