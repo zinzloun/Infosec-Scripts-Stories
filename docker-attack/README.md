@@ -1,5 +1,5 @@
 # Abusing docker misconfiguration
-I took advantage of chained misconfiguration to escape the container and get access to the host OS
+I took advantage of chained misconfiguration to escape the container and get access to host OS
 ## First misconfiguration
 The container was externally exposed
 
