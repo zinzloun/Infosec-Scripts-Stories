@@ -38,7 +38,12 @@ In this scenario, since the container can see the <i>/sbin/init</i> process on t
     root
 And here we are!
 For more information on the nsenter (namespace enter) command you can consult the related manual.
- 
+
+## Mitigations
+Protect Docker daemon socket. To accomplish that you can:
+1. Don't expose it
+2. [Use SSH](https://docs.docker.com/engine/security/protect-access/#use-ssh-to-protect-the-docker-daemon-socket)
+3. [Use TLS\HTTPS](https://docs.docker.com/engine/security/protect-access/#use-tls-https-to-protect-the-docker-daemon-socket). More information using [Self-signed certificates](https://gist.github.com/nicosingh/d8bf0defdd4c911bda3392e420d665dd)
 
 ## A final note
-Actually I faced this scenario two days ago (17/09/2024) on a real engagement.
+Actually I faced this scenario in a real engagement.
