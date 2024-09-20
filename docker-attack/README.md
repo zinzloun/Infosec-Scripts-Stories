@@ -24,10 +24,9 @@ Get a shell inside the remote container
     USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     root           1  0.0  0.5 102540 11388 ?        Ss   13:14   0:03 /sbin/init
     ...
-There are a total of 191 of running process, very strange for a container: maybe the container is sharing the same namespace with the host? That would imply the container can communicate with the processes on the host.
+There are a total of 191 running process, very strange for a container: maybe the container is sharing the same namespace with the host OS? That would imply the container can communicate with the processes on the host.
 
-
-## Abusing the second misconfiguration: shared namespace
+## Abusing the second misconfiguration: shared host namespace
 Here we are abusing <b>nsenter</b> command, that allows us to execute a processes in a differen namespace. 
 In this scenario, since the container can see the <i>/sbin/init</i> process on the host machine, we can try to execute a shell on the host context. Let's give it a try: 
 
