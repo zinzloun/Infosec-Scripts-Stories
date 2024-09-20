@@ -90,4 +90,7 @@ Actually I faced this scenario in a real engagement.
          "printf \\\"Username: admin\\\\nPassword: _admin$23_\\\\n\\\"... /var/www/html/database.config\"],\"Image\":\"sha256:1e4a2d11384ed8ac500f2762825c3f3d134ad5d78813a5d044357b66d4c91800\",\"Volumes\":null,\"WorkingDir\":\"\",\"Entrypoint\"
          ....
 
-Above we can see that we retrived the credentials for the a DB, from the history
+Above we can see that we retrived the credentials for the a DB, from the history.
+
+## Explore an image
+We can use [Dive](https://github.com/wagoodman/dive)
