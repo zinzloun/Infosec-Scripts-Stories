@@ -44,6 +44,7 @@ Protect Docker daemon socket. To accomplish that you can:
 1. Don't expose it
 2. [Use SSH](https://docs.docker.com/engine/security/protect-access/#use-ssh-to-protect-the-docker-daemon-socket)
 3. [Use TLS\HTTPS](https://docs.docker.com/engine/security/protect-access/#use-tls-https-to-protect-the-docker-daemon-socket). More information using [Self-signed certificates](https://gist.github.com/nicosingh/d8bf0defdd4c911bda3392e420d665dd)
+4. Don't run containers in <b>privileged mode</b>. It's recommended assigning specific capabilities to a container, rather than running it with the --privileged flag. More info about capabilities [here](https://docs.docker.com/engine/security/#linux-kernel-capabilities).
 
 ## A final note
 Actually I faced this scenario in a real engagement.
