@@ -1,5 +1,5 @@
-# Exploits
-- Abusing [docker misconfiguration](./docker-attack)
+# Stories
+- Abusing [Docker](./docker-attack)
 # Scripts
 Some u(nu)seful scripts<br>
 - SprayDom.ps1: Password spray attack against domain users
