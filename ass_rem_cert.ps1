@@ -12,6 +12,11 @@ $Callback = {param($sender,$cert,$chain,$errors) return $true}
 $SSLStream = New-Object -TypeName System.Net.Security.SSLStream -ArgumentList @($tcpstream, $True, $Callback)
 $SSLStream.AuthenticateAsClient($host_)
 $Certificate = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($SSLStream.RemoteCertificate)
+$Certificate
+write-host ""
+"Cipher Algorithm: " + $SSLStream.CipherAlgorithm
+"Cipher Strength: " + $SSLStream.CipherStrength
+"Hash Algorithm: " + $SSLStream.HashAlgorithm
 $SSLStream.Dispose()
 $TCPClient.Dispose()
-$Certificate
+
