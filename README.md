@@ -11,3 +11,4 @@ Some u(nu)seful scripts<br>
 - packetfu_port_scanner.rb: Scan a given port range for an IP, requires PacketFu as well
 - install_cron_rs_openssl.sh: Set a cron job to persist a reverse shell through openssl, see comment in the file fore more info
 - cewl2ascii.sh: Clean up a generated wordlist from a Wikipedia site, using cewl (required)
+- ass_rem_cert.ps1: Assesment remote X509 Certificates using TLS 1.3
