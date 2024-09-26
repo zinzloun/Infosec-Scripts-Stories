@@ -10,7 +10,7 @@ $tcpstream = $TcpSocket.GetStream()
 # if the certificate is NOT self-signed you can comment the following line
 $Callback = {param($sender,$cert,$chain,$errors) return $true}
 $SSLStream = New-Object -TypeName System.Net.Security.SSLStream -ArgumentList @($tcpstream, $True, $Callback)
-$SSLStream.AuthenticateAsClient($IP)
+$SSLStream.AuthenticateAsClient($host_)
 $Certificate = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($SSLStream.RemoteCertificate)
 $SSLStream.Dispose()
 $TCPClient.Dispose()
