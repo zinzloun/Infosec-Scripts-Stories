@@ -28,3 +28,6 @@ for project in projects:
         print ("Error with this download")
         print (e)
         pass
+
+# to look for secrets inside a folder project (unzip it before):
+## └─$ grep -riE "key|password|token" .
