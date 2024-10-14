@@ -3,4 +3,4 @@
 - jenkins: abuse On-Merge builds misconfiguration
   - rev_shell.sh: Remote reverse shell script to be served from the attacker, through HTTP (e.g python -m http.server)
   - Jenkinsfile: configuration file hosted on the GitLab CI/CD pipe
- -jenkins/rs.groovy: Groovy script reverse shell
+ - jenkins/rs.groovy: Groovy script reverse shell
