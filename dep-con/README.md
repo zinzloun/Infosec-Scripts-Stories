@@ -1,7 +1,8 @@
 # PIP dependency confusion
-## Theory
 ![conf](confusion.png)
 
+
+## Theory
 https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610
 ## Lab setup
 - Debian GNU/Linux 12 (bookworm) x64
