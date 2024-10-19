@@ -3,6 +3,7 @@
 
 
 ## Theory
+First of all, you are invited to read this great resource: 
 https://medium.com/@alex.birsan/dependency-confusion-4a5d60fec610
 ## Lab setup
 - Debian GNU/Linux 12 (bookworm) x64
